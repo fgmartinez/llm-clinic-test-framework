@@ -1,16 +1,16 @@
 name: clinic_llm_eval_env
 channels:
-  - defaults
   - conda-forge
+  - defaults
 dependencies:
   - python=3.11
   - pip
+  - scikit-learn
+  - numpy
   - pip:
       - deepeval
       - langchain-openai
       - langchain-google-genai
       - jinja2
-      - scikit-learn
-      - numpy
       - python-dotenv
       - pytest
