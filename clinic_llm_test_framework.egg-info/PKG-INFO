@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: clinic_llm_test_framework
+Version: 0.1.0
+Summary: Evaluation framework for a medical clinic virtual assistant using LLMs
+Requires-Dist: deepeval
+Requires-Dist: langchain-openai
+Requires-Dist: langchain-google-genai
+Requires-Dist: jinja2
+Requires-Dist: scikit-learn
+Requires-Dist: numpy
+Requires-Dist: python-dotenv
+Dynamic: requires-dist
+Dynamic: summary

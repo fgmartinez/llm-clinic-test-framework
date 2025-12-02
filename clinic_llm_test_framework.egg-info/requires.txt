@@ -1,0 +1,7 @@
+deepeval
+langchain-openai
+langchain-google-genai
+jinja2
+scikit-learn
+numpy
+python-dotenv

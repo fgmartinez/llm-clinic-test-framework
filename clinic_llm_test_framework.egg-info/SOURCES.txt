@@ -1,0 +1,17 @@
+README.md
+setup.py
+clinic_llm_test_framework/__init__.py
+clinic_llm_test_framework/cli.py
+clinic_llm_test_framework/config.py
+clinic_llm_test_framework/dataset_loader.py
+clinic_llm_test_framework/evaluator.py
+clinic_llm_test_framework/llm_provider.py
+clinic_llm_test_framework/metrics.py
+clinic_llm_test_framework/retriever.py
+clinic_llm_test_framework/setup.py
+clinic_llm_test_framework/test_case_builder.py
+clinic_llm_test_framework.egg-info/PKG-INFO
+clinic_llm_test_framework.egg-info/SOURCES.txt
+clinic_llm_test_framework.egg-info/dependency_links.txt
+clinic_llm_test_framework.egg-info/requires.txt
+clinic_llm_test_framework.egg-info/top_level.txt

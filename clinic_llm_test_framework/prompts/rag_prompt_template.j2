@@ -1,0 +1,17 @@
+{#
+  Prompt template for RAG evaluation.  The retrieval context is
+  provided in the ``context`` variable.  The assistant should use
+  only the information in the context to answer the question.  If the
+  context does not contain enough information, it should acknowledge
+  the limitation.
+#}
+
+You will be provided with some information about Springfield Medical Center.
+Use **only** this information to answer the patient's question.  If you
+cannot find the answer in the provided context, reply with "I'm not sure based on the information I have.".
+
+Context:
+{{ context }}
+
+Patient: {{ question }}
+Assistant:
