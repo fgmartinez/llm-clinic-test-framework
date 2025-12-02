@@ -16,7 +16,7 @@ jobs:
       - name: Set up Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          environment-file: clinic_llm_test_framework/environment.yml
+          environment-file: environment.yml
           activate-environment: clinic_llm_eval_env
           python-version: 3.10
           auto-activate-base: false
