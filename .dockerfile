@@ -1,25 +1,24 @@
-# Usa Python 3.11 slim como base
+# Docker image for running the Clinic LLM Test Framework tests in CI.
+
 FROM python:3.11-slim
 
-# Variables de entorno para evitar archivos .pyc y loguear a stdout
+# Avoid .pyc and enable unbuffered output
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Dependencias de sistema básicas
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends build-essential && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copia todos los archivos del proyecto al contenedor
+# Copy project into the image
 COPY . .
 
-# Instala el proyecto de forma editable y pytest
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -e . && \
-    pip install --no-cache-dir pytest
+# Install the package and pytest
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -e . \
+    && pip install --no-cache-dir pytest
 
-# Comando por defecto: ejecutar los tests
+# Default command: run the full test suite
 CMD ["pytest", "-q"]

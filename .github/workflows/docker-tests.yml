@@ -1,17 +1,15 @@
-name: Tests (Docker)
+name: Docker Tests (live prompt + RAG)
 
 on:
   push:
     branches:
       - main
-      - feature/docker
   pull_request:
     branches:
       - main
-      - feature/docker
 
 jobs:
-  tests-in-docker:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,5 +19,10 @@ jobs:
       - name: Build Docker image
         run: docker build -t llm-clinic-test-framework .
 
-      - name: Run tests inside Docker
-        run: docker run --rm llm-clinic-test-framework
+      - name: Run tests inside Docker (uses real API)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          docker run --rm \
+            -e OPENAI_API_KEY="${OPENAI_API_KEY}" \
+            llm-clinic-test-framework
