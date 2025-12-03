@@ -1,0 +1,25 @@
+name: Tests (Docker)
+
+on:
+  push:
+    branches:
+      - main
+      - feature/docker
+  pull_request:
+    branches:
+      - main
+      - feature/docker
+
+jobs:
+  tests-in-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t llm-clinic-test-framework .
+
+      - name: Run tests inside Docker
+        run: docker run --rm llm-clinic-test-framework
