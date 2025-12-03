@@ -5,12 +5,23 @@ from pathlib import Path
 
 import pytest
 
-DATASET_PATH = Path("clinic_llm_test_framework/data/clinic_qa.json")
+# Path to the evaluation dataset (Q&A cases)
+DATASET_PATH = (
+    Path(__file__)
+    .resolve()
+    .parents[1]  # -> clinic_llm_test_framework/
+    / "data"
+    / "clinic_qa.json"
+)
 
 
 @pytest.mark.integration
-def test_cli_prompt_uses_real_api():
-    """End-to-end test: CLI in prompt mode using the real LLM."""
+def test_cli_prompt_mode_uses_real_api() -> None:
+    """
+    End-to-end test: CLI in 'prompt' mode calling the real LLM.
+
+    This test will be skipped if OPENAI_API_KEY is not set in the environment.
+    """
     if not os.getenv("OPENAI_API_KEY"):
         pytest.skip("OPENAI_API_KEY is not set; skipping live prompt test.")
 
@@ -33,8 +44,12 @@ def test_cli_prompt_uses_real_api():
 
 
 @pytest.mark.integration
-def test_cli_rag_uses_real_api():
-    """End-to-end test: CLI in RAG mode using the real LLM."""
+def test_cli_rag_mode_uses_real_api() -> None:
+    """
+    End-to-end test: CLI in 'rag' mode calling the real LLM.
+
+    This test will be skipped if OPENAI_API_KEY is not set in the environment.
+    """
     if not os.getenv("OPENAI_API_KEY"):
         pytest.skip("OPENAI_API_KEY is not set; skipping live RAG test.")
 
